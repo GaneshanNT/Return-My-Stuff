@@ -1,0 +1,8 @@
+db.sqlite3
+/accounts/migrations
+/accounts/__pycache__
+/post/migrations
+/post/__pycache__
+/ReturnMyStuff/__pycache__
+/media
+/static

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <section id="register" class="bg-light py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <div class="card">
+                <div class="card-header bg-primary text-white text-center">
+                  <h4>
+                    <i class="fas fa-flag"></i> Report</h4>
+                    <h5>" Your work is appreciated "</h5>
+                </div>
+                <div class="card-body">
+            <!--Alerts-->
+                {% include 'partials/_alerts.html' %}
+                    <form action="#" method ="POST" enctype="multipart/form-data" >
+                      <div class="form-group">
+                      <label for="first_name">Title</label>
+                      <input type="text" name="title" class="form-control" placeholder="ex :Macbook or wallets etc" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="itemtype">Item Type</label>
+                      <input type="text" name="itemtype" class="form-control" placeholder="ex :laptop or mobiles etc" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="username">Tag</label>
+                        <select type="text" class="form-control" name="tag" required>
+                          <option>Choose tags</option>
+                          <option>Electronics</option>
+                          <option>Documents and Govt.Proof</option>
+                          <option>Banking accessories and Wallets</option>
+                          <option>Clothes</option>
+                          <option>Others</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="text">Location</label>
+                      <input type="text" name="location" class="form-control" placeholder="Mention place where you found"required>
+                    </div>
+                    <div class="form-group">
+                      <label for="phonenumber">City</label>
+                      <input type="tel" name="city" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="profile">State</label><br>
+                        <input type="text" name="state" class="form-control" required>
+                    </div><br>
+                    <div class="form-group">
+                      <label for="profile">Picture main</label><br>
+                        <input type="file" name="profile" required>
+                    </div><br>
+                    <div class="form-group">
+                      <label for="profile">Picture 1 (Optional)</label><br>
+                        <input type="file" name="profile1">
+                    </div><br>
+                    <div class="form-group">
+                      <label for="profile">Picture 2 (Optional)</label><br>
+                        <input type="file" name="profile2">
+                    </div><br>
+                    <div class="form-group">
+                      <label for="profile">Description</label><br>
+                      <textarea type="text" class="form-control" name="description" rows="5" id="comment" required></textarea>
+                    </div><br>
+                    <input type="submit" value="Register" class="btn btn-secondary btn-block">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{% endblock %}
