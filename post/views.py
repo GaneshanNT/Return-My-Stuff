@@ -1,31 +1,40 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib import messages, auth
-from .models import *
+from .models import Post
+from .forms import PostForm
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 
 def home(request):
-    return render(request,'post/index.html')
+    post_detail = Post.objects.order_by('-date').filter(is_published = True)
+    content = {
+        'post_detail': post_detail
+    }
+    return render(request,'post/index.html',content)
+
 
 def report(request):
     if request.method == 'POST':
-        title = request.POST['title']
-        item_type = request.POST['itemtype']
-        tag =  request.POST['tag']
-        location = request.POST['location']
-        city = request.POST['city']
-        state = request.POST['state']
-        photo_main = request.FILES['profile']
-        photo_1 = request.FILES['profile']
-        photo_2 = request.FILES['profile']
-        description = request.POST['description']
+        report_form = PostForm(request.POST,request.FILES)
 
-        if request.user.is_authenticated:
-            reporter_id = request.user.id
-            item_report = Post(title=title,item_type=item_type,tag=tag,location=location,city=city,state=state,photo_main=photo_main,photo_1=photo_1,photo_2=photo_2,description=description)
-            item_report.save()
-            messages.success(request, 'You are now registered and can log in')
-    return render(request,'post/report.html')
+        if report_form.is_valid():
+            instance = report_form.save(commit=False)
+            instance.reporter = request.user
+            instance.save()
+            messages.success(request,'Your report has been successfully created!')
+            return redirect('home')
+    else:
+        report_form = PostForm()
+    context = {
+        'report_form':report_form
+    }
+    return render(request, 'post/report.html',context)
 
-
+def reportdetail(request,report_id):
+    post_detail = get_object_or_404(Post,pk=report_id)
+    context = {
+        'post_detail': post_detail
+    }
+    return render (request,'post/detail.html',context)

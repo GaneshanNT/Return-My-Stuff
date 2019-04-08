@@ -1,7 +1,7 @@
 {% extends "base.html" %} 
-
 {% block content %}
-
+{% if post_detail  %}
+{% for post in post_detail %}
 
 <div class="container">
     <div class="card border-secondary mt-5 mb-5">
@@ -10,51 +10,61 @@
           <tbody>
             <tr>
               <td>
-                <h5><b>Title</b></h5>
+                <h4><b>Title</b></h4>
               </td>
               <td>
-                <h5>hello</h5>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h5><b>Item Type</b></h5>
-              </td>
-              <td>
-                <h5>hello</h5>
+                <h5>{{ post.title }}</h5>
               </td>
             </tr>
             <tr>
               <td>
-                <h5><b>Location</b></h5>
+                <h6><b>Item Type</b></h6>
               </td>
               <td>
-                <h5>hello</h5>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h5><b>Photos</b></h5>
-              </td>
-              <td>
-                <h5>hello</h5>
+                <h5>{{ post.item_type }}</h5>
               </td>
             </tr>
             <tr>
               <td>
-                <h5><b>Tag</b></h5>
+                <h6><b>Location</b></h6>
+              </td>
+              <td>
+                <h6>{{ post.location }}</h6>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h6><b>Photos</b></h6>
               </td>
               <td>
                 <h6>hello</h6>
               </td>
             </tr>
+            <tr>
+              <td>
+                <h6><b>Tag</b></h6>
+              </td>
+              <td>
+                <h6>{{ post.tag }}</h6>
+              </td>
+            </tr>
           </tbody>
         </table>
-        <a href="#" class="btn btn-secondary">Go somewhere</a>
+        <a href="{% url 'detail' post.id %}" class="btn btn-secondary">More info</a>
+      </div>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<div class="container">
+    <div class="card border-secondary mt-5 mb-5">
+      <div class="card-body">
+      <h4>Reports not available</h4>
       </div>
     </div>
 </div>
 
+{% endif %}
 
 
 {% endblock content %}
