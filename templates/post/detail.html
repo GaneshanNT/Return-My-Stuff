@@ -1,18 +1,19 @@
 {% extends "base.html" %} 
-
+{% load static %}
 {% block content %}
+
 
 <div class="container">
     <div class="card border-secondary mt-5 mb-5" style="width: 60rem;">
       <div class="card-body">
-        <table class="table table-borderless" style="width: 20rem;">
+        <table class="table table-borderless" style="width: 50rem;">
           <tbody>
             <tr>
               <td>
                 <h5><b>Title</b></h5>
               </td>
               <td>
-                <h5>hello</h5>
+                <h5>{{ post_detail.title }}</h5>
               </td>
             </tr>
             <tr>
@@ -20,7 +21,7 @@
                 <h5><b>Item Type</b></h5>
               </td>
               <td>
-                <h5>hello</h5>
+                <h5>{{ post_detail.item_type }}</h5>
               </td>
             </tr>
             <tr>
@@ -28,7 +29,7 @@
                 <h5><b>Location</b></h5>
               </td>
               <td>
-                <h5>hello</h5>
+                <h5>{{ post_detail.location }}h5>
               </td>
             </tr>
             <tr>
@@ -36,7 +37,7 @@
                 <h5><b>City</b></h5>
               </td>
               <td>
-                <h5>hello</h5>
+                <h5>{{ post_detail.city }}</h5>
               </td>
             </tr>
             <tr>
@@ -44,7 +45,7 @@
                 <h5><b>State</b></h5>
               </td>
               <td>
-                <h5>hello</h5>
+                <h5>{{ post_detail.state }}</h5>
               </td>
             </tr>
             <tr>
@@ -52,23 +53,15 @@
                 <h5><b>Description</b></h5>
               </td>
               <td>
-                <h5>hello</h5>
+                <h5>{{ post_detail.description }}</h5>
               </td>
             </tr>
             <tr>
               <td>
-                <h5><b>Posted date</b></h5>
+                <h5><b>post date</b></h5>
               </td>
               <td>
-                <h5>hello</h5>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h5><b>Photos</b></h5>
-              </td>
-              <td>
-                <h5>hello</h5>
+                <h5>{{ post_detail.date }}</h5>
               </td>
             </tr>
             <tr>
@@ -76,14 +69,53 @@
                 <h5><b>Tag</b></h5>
               </td>
               <td>
-                <h6>hello</h6>
+                <h6>{{ post_detail.tag }}</h6>
               </td>
             </tr>
           </tbody>
         </table>
-        <a href="#" class="btn btn-secondary">Go somewhere</a>
+
+    <div class="container">
+    <h5> Photos </h5>
+        <div class="row py-2">
+          <div class="col-md-9">
+            <div class="row mb-5 thumbs">
+              <div class="col-md-2">
+                <a href="{{ post_detail.photo_main.url }}" data-lightbox="home-images">
+                  <img src="{{ post_detail.photo_main.url }}" alt="" class="img-fluid">
+                </a>
+              </div>
+              {% if post_detail.photo_1 %}
+              <div class="col-md-2">
+                <a href="{{ post_detail.photo_1.url }}" data-lightbox="home-images">
+                  <img src="{{ post_detail.photo_1.url }}" alt="" class="img-fluid">
+                </a>
+              </div>
+              {% endif %}
+              {% if post_detail.photo_2 %}
+              <div class="col-md-2">
+                <a href="{{ post_detail.photo_2.url }}" data-lightbox="home-images">
+                  <img src="{{ post_detail.photo_2.url }}" alt="" class="img-fluid">
+                </a>
+              </div>
+              {% endif %}
+          </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+        <a href="{% url 'home' %}" class="btn btn-secondary">Back to home</a>
       </div>
     </div>
 </div>
+
+
 
 {% endblock content %}
