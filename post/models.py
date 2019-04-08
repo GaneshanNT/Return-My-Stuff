@@ -1,5 +1,6 @@
 from django.db import models
 # Create your models here.
+from django.core.validators import RegexValidator
 from django.utils.timezone import datetime
 from django.contrib.auth.models import User
 
@@ -31,4 +32,15 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
+class Request(models.Model):
+    requester = models.ForeignKey(User,on_delete=models.CASCADE)
+    name = models.CharField(max_length=250)
+    phone = models.CharField(max_length=10, validators=[RegexValidator(r'^\d{1,10}$')])
+    proof = models.ImageField(upload_to='proof/%Y/%m/%d/',help_text='(ex : bills)Upload valid proof to get that item')
+    viewed = models.BooleanField(default=False)
+    date = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return self.name
 

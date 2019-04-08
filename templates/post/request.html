@@ -9,17 +9,16 @@
         <div class="col-md-6 mx-auto">
           <div class="card">
             <div class="card-header bg-primary text-white">
-              <h4><center>
-                <i class="fas fa-edit"></i> Report</h4><br>
-                <h6>"Your work is appreciated"</h6></center>
+              <h4>
+                <center><i class="fas fa-reply-all"></i> Request to return</h4></center>
             </div>
             <div class="card-body">
             <!--Alerts-->
             {% include 'partials/_alerts.html' %}
-                <form action="{% url 'report' %}" method ="POST" enctype="multipart/form-data" >
+                <form action="{% url 'request' %}" method ="POST" enctype="multipart/form-data" >
                   {% csrf_token %}
-                  {{report_form|crispy}}
-                <input type="submit" value="report" class="btn btn-secondary btn-block">
+                  {{request_form|crispy}}
+                <input type="submit" value="request" class="btn btn-secondary btn-block">
               </form>
             </div>
           </div>
