@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+
 from .forms import UserInfoForm,ExtendUserCreationForm
+from post.models import Post
 def register(request):
     if request.method == 'POST':
 
@@ -46,4 +48,5 @@ def logout(request):
     return redirect('home')
 
 def dashboard(request):
+  
   return render(request, 'accounts/dashboard.html')
