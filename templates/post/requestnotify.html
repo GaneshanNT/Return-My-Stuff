@@ -1,0 +1,51 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
+
+
+<div class="container">
+    <div class="card border-secondary mt-5 mb-5">
+      <div class="card-body">
+        <table class="table table-borderless table-Responsive w-auto">
+          <tbody>
+            <tr>
+              <td>
+                <h6><b>Requester Name</b></h6>
+              </td>
+              <td>
+                <h6>{{ n.name }}</h6>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h6><b>Phone Number</b></h6>
+              </td>
+              <td>
+                <h6>{{ n.phone }}</h6>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Proof</b></td>
+                <td>
+                  {% if n.proof%}
+                  <div class="col-md-4 mt-2">
+                    <a href="{{ n.proof.url }}" data-lightbox="home-images">
+                      <img src="{{ n.proof.url }}" alt="" class="img-fluid">
+                    </a>
+                  </div>
+                  {% else %}
+                  <div class="col-md-4 mt-2">
+                    <h6>Proof not submitted</h6>
+                  </div>
+                  {% endif %}
+            </td>
+          </tr>
+       </tbody>
+    </table>
+      </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

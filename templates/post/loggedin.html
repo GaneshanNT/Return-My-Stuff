@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        
+    </div>
+    <div class="col-md-6">
+            {% if notification %}
+                 <div class="thumbnail-center">
+                    <font size="3">
+                        <p>{{ full_name }} Click on the link to contact the person</p>
+                    </font>
+                 </div>
+                    {% for n in notification %}
+                        <div class="thumbnail">
+                            <p><a href="{% url 'show_notification' n.id %}">{{n.Name}} requested for the item</a></p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                 <div class="thumbnail-center">
+                     <font size="4">
+                         <p>You do not have any notification</p>
+                     </font>
+                 </div>
+            {% endif %}
+    </div>
+    <div class="col-md-3">
+    </div>
+
+</div>
