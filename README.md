@@ -1,8 +1,6 @@
-Return My Stuff! - Contributions are welcome
+#Return My Stuff! - Contributions are welcome
 
 My items not belongs to you.That's mine
-
-# Knowledge-Replica
 
 [![Python Version](https://img.shields.io/badge/python-3.7-brightgreen.svg)](https://python.org)
 [![Django Version](https://img.shields.io/badge/django-2.1-brightgreen.svg)](https://djangoproject.com)
