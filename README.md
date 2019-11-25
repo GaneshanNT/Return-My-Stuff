@@ -2,7 +2,10 @@
 
 My items not belongs to you.That's mine
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 48dc6c505806d95fecd7a5df1ee264c25bcb7110
 [![Python Version](https://img.shields.io/badge/python-3.7-brightgreen.svg)](https://python.org)
 [![Django Version](https://img.shields.io/badge/django-2.1-brightgreen.svg)](https://djangoproject.com)
 

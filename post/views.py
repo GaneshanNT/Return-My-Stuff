@@ -55,11 +55,7 @@ def requestitem(request):
             instance = request_form.save(commit=False)
             instance.requester = request.user
             instance.save()
-<<<<<<< HEAD
             return HttpResponse("<h3> Request form submitted successfully. <br> Reporter get back to you soon <br> Hope for the BEST </h3>")
-=======
-            return HttpResponseRedirect("<h3> Request form submitted successfully. <br> Reporter get back to you soon <br> Hope for the BEST </h3>")
->>>>>>> a4e69c74ad142eb9f7318b794860d863478518f5
     else:
         request_form=RequestForm()
     context = {
